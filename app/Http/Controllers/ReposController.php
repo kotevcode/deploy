@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
+use App\Http\Requests\RepoRequest;
+use App\Models\Repo;
 
 class ReposController extends Controller
 {
@@ -38,7 +39,7 @@ class ReposController extends Controller
   {
     $form = $this->form('App\Forms\RepoForm', [
       'method' => 'POST',
-      'url' => 'store'
+      'url' => route('repos.store')
     ]);
     return view('repos.create', compact('form'));
 
@@ -50,9 +51,10 @@ class ReposController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function store(Request $request)
+  public function store(RepoRequest $request)
   {
-    //
+    $repo = new Repo($request->all());
+    return $repo;
   }
 
   /**
@@ -84,7 +86,7 @@ class ReposController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function update(RepoRequest $request, $id)
   {
     //
   }

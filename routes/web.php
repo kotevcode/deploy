@@ -13,4 +13,4 @@
 
 Auth::routes();
 
-Route::resource('/', 'ReposController');
+Route::resource('/repos', 'ReposController');
