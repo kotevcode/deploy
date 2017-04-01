@@ -55,7 +55,7 @@ class Deploy {
 
     // Discard any changes to tracked files since our last deploy
     exec('git reset --hard HEAD', $output);
-    $this->log('Reseting repository... ');
+    $this->log('Reseting repository... ', implode(' ', $output));
 
     // Update the local repository
     exec('git pull '.$this->_repository->remote.' '.$this->_repository->branch, $output);
