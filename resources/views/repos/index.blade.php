@@ -20,6 +20,7 @@
                         <th>#</th>
                         <th>Url</th>
                         <th>Bitbucket path</th>
+                        <th>Account</th>
                         <th>Directory</th>
                         <th>Remote</th>
                         <th>Branch</th>
@@ -36,6 +37,7 @@
                           <td>{{$repo->id}}</td>
                           <td><a href="{{$repo->url}}" target="_blank"></a>{{$repo->url}}</td>
                           <td>{{$repo->bitbucket}}</td>
+                          <td>{{$repo->account}}</td>
                           <td>{{$repo->directory}}</td>
                           <td>{{$repo->remote}}</td>
                           <td>{{$repo->branch}}</td>

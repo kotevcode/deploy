@@ -45,6 +45,9 @@ class Deploy {
 
   /**
   * Executes the necessary commands to deploy the website.
+  * to allow it to run as sudo:
+  * Cmnd_Alias DEPLOY_COMMANDS = /usr/bin/git reset, /usr/bin/git pull, /usr/bin/chmod, /usr/bin/chown
+  * user ALL=NOPASSWD: DEPLOY_COMMANDS
   */
   public function execute()
   {
@@ -61,7 +64,7 @@ class Deploy {
     $this->log('Pulling in changes... '.implode(' ', $output));
 
     // changing permissions
-    exec('sudo chown -R wallpaperbyyou:wallpaperbyyou '.$this->_repository->directory);
+    exec('sudo chown -R '.$this->_repository->account.':'.$this->_repository->account.' '.$this->_repository->directory);
     $this->log('changing permissions... ');
 
     // Secure the .git directory

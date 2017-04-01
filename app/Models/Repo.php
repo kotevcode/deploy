@@ -15,6 +15,7 @@ class Repo extends Model
     protected $fillable = [
       'url',
       'bitbucket',
+      'account',
       'directory',
       'remote',
       'branch',

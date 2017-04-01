@@ -11,17 +11,22 @@ class RepoForm extends Form
     $this
     ->add('url', 'text', [
       'label' => 'Url',
-      'attr' => ['placeholder' => 'http://deploy.b2csandbox.com'],
+      'attr' => ['placeholder' => 'http://b2csandbox.com'],
       'rules' => 'required',
     ])
     ->add('bitbucket', 'text', [
       'label' => 'Bitbucket path',
-      'attr' => ['placeholder' => 'b2cprint/deploy'],
+      'attr' => ['placeholder' => 'b2cprint/sample'],
+      'rules' => 'required',
+    ])
+    ->add('account', 'text', [
+      'label' => 'User account',
+      'attr' => ['placeholder' => 'b2csandbox'],
       'rules' => 'required',
     ])
     ->add('directory', 'text', [
       'label' => 'Directory',
-      'attr' => ['placeholder' => '/home/b2csandbox/deploy'],
+      'attr' => ['placeholder' => '/home/b2csandbox/public_html'],
       'rules' => 'required',
     ])
     ->add('remote', 'text', [
