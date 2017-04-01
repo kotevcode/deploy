@@ -78,7 +78,7 @@ class ReposController extends Controller
   public function edit(Repo $repo)
   {
     $form = $this->form('App\Forms\RepoForm', [
-      'method' => 'Patch',
+      'method' => 'PATCH',
       'model' => $repo,
       'url' => route('repos.update',$repo)
     ]);

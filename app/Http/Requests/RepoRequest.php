@@ -22,9 +22,19 @@ class RepoRequest extends FormRequest
   */
   public function rules()
   {
+    if ($this->method() == 'PATCH')
+    {
+      // Update operation, exclude the record with id from the validation:
+      $bitbucket_rule = 'required|string|unique:repos,bitbucket,' . $this->repo->id;
+    }
+    else
+    {
+      // Create operation. There is no id yet.
+      $bitbucket_rule = 'string|unique:repos|required';
+    }
     return [
       'url'           => 'string|url|between:18,255|required',
-      'bitbucket'     => 'string|unique:repos|required',
+      'bitbucket'     => $bitbucket_rule,
       'directory'     => 'string|required',
       'remote'        => 'string|required',
       'branch'        => 'string|required',
