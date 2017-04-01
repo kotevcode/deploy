@@ -34,7 +34,11 @@ class WebhookController extends Controller
       $log->user_id = 0;
     }
     $log->save();
-    return $log;
+    if ($rep_name) {
+      return redirect()->back();
+    }else{
+      return $log;
+    }
   }
 
 }

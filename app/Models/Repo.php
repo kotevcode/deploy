@@ -24,7 +24,7 @@ class Repo extends Model
 
     public function logs()
     {
-      return $this->hasMany('App\Models\Log');
+      return $this->hasMany('App\Models\Log')->orderBy('created_at','desc');
     }
 
 }

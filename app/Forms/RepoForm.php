@@ -36,8 +36,7 @@ class RepoForm extends Form
     ])
     ->add('auto_deploy', 'checkbox', [
       'label' => 'Auto Deploy',
-      'value' => 1,
-      'checked' => true
+      'value' => 1
     ])
     ->add('comments', 'textarea', [
       'label' => 'Comments',
