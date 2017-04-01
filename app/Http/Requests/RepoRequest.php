@@ -36,6 +36,7 @@ class RepoRequest extends FormRequest
       'url'           => 'string|url|between:18,255|required',
       'bitbucket'     => $bitbucket_rule,
       'directory'     => 'string|required',
+      'account'       => 'string|required',
       'remote'        => 'string|required',
       'branch'        => 'string|required',
       'auto_deploy'   => 'integer',
