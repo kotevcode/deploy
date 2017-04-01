@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Services\Deploy;
 use App\Models\Log;
+use Illuminate\Support\Facades\Log as laravelLog;
 
 class WebhookController extends Controller
 {
@@ -21,6 +22,7 @@ class WebhookController extends Controller
 
   public function deploy($rep_name = false)
   {
+    laravelLog::info('starting');
     $deploy = new Deploy($rep_name);
     $deploy->execute();
     $log = new Log;
