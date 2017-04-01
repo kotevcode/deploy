@@ -20,4 +20,4 @@ Route::get('/', function()
 Route::resource('/repos', 'ReposController');
 
 Route::any('webhook/{rep_name}', ['as' => 'webhook', 'uses' => 'WebhookController@deploy']);
-Route::any('gjro034580ufkgj3.html', ['uses' => 'WebhookController@deploy']);
+Route::any('tnirpc2b.whk', ['uses' => 'WebhookController@deploy']);
