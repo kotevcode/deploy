@@ -19,6 +19,8 @@ class Deploy {
 
   private $_log = [];
 
+  private $_dir = '/home';
+
   /**
   * Sets up defaults.
   *
@@ -41,6 +43,7 @@ class Deploy {
         die();
       }
     }
+    $this->_dir .= '/'.$this->_repository->account.'/'.$this->_repository->directory;
   }
 
   /**
@@ -53,8 +56,8 @@ class Deploy {
   {
     $this->log('executing on '.$this->_repository->bitbucket);
     // Make sure we're in the right directory
-    chdir($this->_repository->directory);
-    $this->log('Changing working directory to '.$this->_repository->directory);
+    chdir($this->_dir);
+    $this->log('Changing working directory to '.$this->_dir);
     // Discard any changes to tracked files since our last deploy
     exec('sudo git reset --hard HEAD', $output);
     $this->log('Reseting repository... ', implode(' ', $output));
@@ -64,7 +67,7 @@ class Deploy {
     $this->log('Pulling in changes... '.implode(' ', $output));
 
     // changing permissions
-    exec('sudo chown -R '.$this->_repository->account.':'.$this->_repository->account.' '.$this->_repository->directory);
+    exec('sudo chown -R '.$this->_repository->account.':'.$this->_repository->account.' '.$this->_dir);
     $this->log('changing permissions... ');
 
     // Secure the .git directory
