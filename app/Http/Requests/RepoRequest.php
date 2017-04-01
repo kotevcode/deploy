@@ -24,7 +24,7 @@ class RepoRequest extends FormRequest
   {
     return [
       'url'           => 'string|url|between:18,255|required',
-      'bitbucket'     => 'string|required',
+      'bitbucket'     => 'string|unique:repos|required',
       'directory'     => 'string|required',
       'remote'        => 'string|required',
       'branch'        => 'string|required',

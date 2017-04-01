@@ -27,7 +27,8 @@ class ReposController extends Controller
   */
   public function index()
   {
-    return view('home');
+    $repos = Repo::all();
+    return view('repos.index', compact('repos'));
   }
 
   /**
@@ -53,8 +54,8 @@ class ReposController extends Controller
   */
   public function store(RepoRequest $request)
   {
-    $repo = new Repo($request->all());
-    return $repo;
+    $repo = Repo::create($request->all());
+    return redirect()->route('repos.show', $repo->id);
   }
 
   /**
@@ -63,9 +64,9 @@ class ReposController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($id)
+  public function show(Repo $repo)
   {
-    //
+    return view('repos.show', compact('repo'));
   }
 
   /**
@@ -74,9 +75,14 @@ class ReposController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function edit($id)
+  public function edit(Repo $repo)
   {
-    //
+    $form = $this->form('App\Forms\RepoForm', [
+      'method' => 'Patch',
+      'model' => $repo,
+      'url' => route('repos.update',$repo)
+    ]);
+    return view('repos.edit', compact('form'));
   }
 
   /**
@@ -86,9 +92,10 @@ class ReposController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(RepoRequest $request, $id)
+  public function update(RepoRequest $request, Repo $repo)
   {
-    //
+    $repo->fill($request->all());
+    return redirect()->route('repos.show', $repo->id);
   }
 
   /**
@@ -97,8 +104,9 @@ class ReposController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function destroy($id)
+  public function destroy(Repo $repo)
   {
-    //
+    $repo->delete();
+    return redirect()->route('repos.index');
   }
 }

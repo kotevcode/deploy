@@ -21,7 +21,7 @@ class CreateReposTable extends Migration
              $table->string('remote');
              $table->string('branch');
              $table->boolean('auto_deploy');
-             $table->text('comment')->nullable();
+             $table->text('comments')->nullable();
              $table->timestamps();
          });
      }
