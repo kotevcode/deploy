@@ -95,6 +95,7 @@ class ReposController extends Controller
   public function update(RepoRequest $request, Repo $repo)
   {
     $repo->fill($request->all());
+    $repo->save();
     return redirect()->route('repos.show', $repo->id);
   }
 

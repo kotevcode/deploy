@@ -13,4 +13,10 @@
 
 Auth::routes();
 
+Route::get('/', function()
+{
+  return redirect()->route('repos.index');
+});
 Route::resource('/repos', 'ReposController');
+
+Route::any('webhook/{rep_name?}', ['as' => 'webhook', 'uses' => 'WebhookController@deploy']);

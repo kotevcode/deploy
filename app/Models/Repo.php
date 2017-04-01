@@ -22,4 +22,9 @@ class Repo extends Model
       'comments'
     ];
 
+    public function logs()
+    {
+      return $this->hasMany('App\Models\Log');
+    }
+
 }
