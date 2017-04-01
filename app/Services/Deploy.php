@@ -31,7 +31,7 @@ class Deploy {
 
     if($rep_id){
       // the repo form the db
-      $this->_repository = Repo::find($rep_id)->first();
+      $this->_repository = Repo::findOrFail($rep_id);
     }else{ // the called made by webhook
       $this->initPayload();
       $rep_name = $this->_payload->repository->full_name;
@@ -52,17 +52,20 @@ class Deploy {
     // Make sure we're in the right directory
     chdir($this->_repository->directory);
     $this->log('Changing working directory to '.$this->_repository->directory);
-
     // Discard any changes to tracked files since our last deploy
-    exec('git reset --hard HEAD', $output);
+    exec('sudo git reset --hard HEAD', $output);
     $this->log('Reseting repository... ', implode(' ', $output));
 
     // Update the local repository
-    exec('git pull '.$this->_repository->remote.' '.$this->_repository->branch, $output);
+    exec('sudo git pull '.$this->_repository->remote.' '.$this->_repository->branch, $output);
     $this->log('Pulling in changes... '.implode(' ', $output));
 
+    // changing permissions
+    exec('sudo chown -R wallpaperbyyou:wallpaperbyyou '.$this->_repository->directory);
+    $this->log('changing permissions... ');
+
     // Secure the .git directory
-    exec('chmod -R og-rx .git');
+    exec('sudo chmod -R og-rx .git');
     $this->log('Securing .git directory... ');
 
     if (is_callable($this->post_deploy))
