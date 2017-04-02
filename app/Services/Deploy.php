@@ -43,6 +43,7 @@ class Deploy {
         die();
       }
     }
+    $this->_repository->touch();
     $this->_dir .= '/'.$this->_repository->account.'/'.$this->_repository->directory;
   }
 

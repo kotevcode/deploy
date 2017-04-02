@@ -19,5 +19,5 @@ Route::get('/', function()
 });
 Route::resource('/repos', 'ReposController');
 
-Route::get('webhook/{rep_name}', ['as' => 'webhook', 'uses' => 'WebhookController@deploy']);
+Route::get('webhook/{rep_name}', ['as' => 'webhook', 'uses' => 'WebhookController@deploy', 'middleware' => 'auth']);
 Route::post('tnirpc2b.whk', ['uses' => 'WebhookController@deploy']);
