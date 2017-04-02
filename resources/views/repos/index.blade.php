@@ -35,10 +35,10 @@
                           class="danger"
                         @endif>
                           <td>{{$repo->id}}</td>
-                          <td><a href="{{$repo->url}}" target="_blank"></a>{{$repo->url}}</td>
-                          <td>{{$repo->bitbucket}}</td>
+                          <td><a href="{{$repo->url}}" target="_blank"></a>{{str_limit($repo->url,20)}}</td>
+                          <td>{{str_limit($repo->bitbucket,20)}}</td>
                           <td>{{$repo->account}}</td>
-                          <td>{{$repo->directory}}</td>
+                          <td>{{str_limit($repo->directory,20)}}</td>
                           <td>{{$repo->remote}}</td>
                           <td>{{$repo->branch}}</td>
                           <td>
