@@ -7,9 +7,6 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             Latest Repositories
-            <a href="{{route('repos.create')}}" class="btn btn-default btn-xs pull-right">
-              Create
-            </a>
           </div>
 
           <div class="panel-body">
@@ -69,7 +66,7 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           All Repositories
-          <a href="{{route('repos.create')}}" class="btn btn-default btn-xs pull-right">
+          <a href="{{route('repos.create')}}" class="btn btn-primary btn-xs pull-right">
             Create
           </a>
         </div>
