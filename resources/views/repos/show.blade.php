@@ -30,7 +30,15 @@
                         </h3>
                         <ul>
                           @foreach ($element->content as $line)
+                            @if (is_array($line))
+                              <ul>
+                                @foreach ($line as $li)
+                                  <li>{{$li}}</li>
+                                @endforeach
+                              </ul>
+                            @else
                             <li>{{$line}}</li>
+                            @endif
                           @endforeach
                         </ul>
                       </li>
