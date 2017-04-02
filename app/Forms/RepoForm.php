@@ -26,7 +26,7 @@ class RepoForm extends Form
     ])
     ->add('directory', 'text', [
       'label' => 'Directory',
-      'attr' => ['placeholder' => '/home/b2csandbox/public_html'],
+      'attr' => ['placeholder' => 'public_html'],
       'rules' => 'required',
     ])
     ->add('remote', 'text', [
