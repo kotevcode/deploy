@@ -33,7 +33,7 @@ class RepoRequest extends FormRequest
       $bitbucket_rule = 'string|unique:repos|required';
     }
     return [
-      'url'           => 'string|url|between:18,255|required',
+      'url'           => 'string|url|between:8,255|required',
       'bitbucket'     => $bitbucket_rule,
       'directory'     => 'string|required',
       'account'       => 'string|required',
