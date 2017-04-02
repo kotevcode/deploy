@@ -27,8 +27,9 @@ class ReposController extends Controller
   */
   public function index()
   {
-    $repos = Repo::orderBy('updated_at','desc')->get();
-    return view('repos.index', compact('repos'));
+    $latest_repos = Repo::orderBy('updated_at','desc')->limit(5)->get();
+    $repos = Repo::orderBy('account')->get();
+    return view('repos.index', compact('repos','latest_repos'));
   }
 
   /**
