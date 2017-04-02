@@ -63,21 +63,25 @@ class Deploy {
     exec('sudo git reset --hard HEAD', $output);
     $this->log('Reseting repository... ');
     $this->log($output);
+    $output = '';
 
     // Update the local repository
     exec('sudo git pull '.$this->_repository->remote.' '.$this->_repository->branch, $output);
     $this->log('Pulling in changes... ');
     $this->log($output);
+    $output = '';
 
     // changing permissions
     exec('sudo chown -R '.$this->_repository->account.':'.$this->_repository->account.' '.$this->_dir, $output);
     $this->log('changing permissions... ');
     $this->log($output);
+    $output = '';
 
     // Secure the .git directory
     exec('sudo chmod -R og-rx .git', $output);
     $this->log('Securing .git directory... ');
     $this->log($output);
+    $output = '';
 
     if (is_callable($this->post_deploy))
     {
