@@ -1,6 +1,6 @@
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
-        Options -MultiViews
+        Options -Indexes +FollowSymLinks -MultiViews
     </IfModule>
 
     RewriteEngine On
@@ -17,4 +17,21 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    <FilesMatch "^\.">
+      Order allow,deny
+      Deny from all
+    </FilesMatch>
+
+    # expire 1 WEEK to images, css and javascript files
+    <FilesMatch "\.(jpg|jpeg|png|gif|swf|ico|css|js)$">
+    Header set Cache-Control "max-age=604800, public"
+    </FilesMatch>
+
+    # add entity tag
+    FileETag MTime Size
+
+    # add gzip
+    SetOutputFilter DEFLATE
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript application/x-javascript text/css font/truetype
 </IfModule>
