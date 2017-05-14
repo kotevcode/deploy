@@ -1,4 +1,4 @@
-## Local Deploy System ##
+## Laravel based local deploy system ##
 
 fully working bitbucket webhook integration for any linux distribution.
 
