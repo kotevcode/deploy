@@ -20,7 +20,8 @@ class Repo extends Model
       'remote',
       'branch',
       'auto_deploy',
-      'comments'
+      'comments',
+      'post_deploy'
     ];
 
     public function logs()

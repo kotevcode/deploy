@@ -47,6 +47,10 @@ class RepoForm extends Form
       'label' => 'Comments',
       'attr' => ['rows' => 3, 'placeholder' => 'Anything else..'],
     ])
+      ->add('post_deploy', 'textarea', [
+        'label' => 'Post Deploy',
+        'attr' => ['rows' => 3, 'placeholder' => 'composer install && npm install'],
+      ])
     ->add('submit', 'submit', [
       'label' => 'Save',
       'attr' => ['class' => 'btn btn-primary btn-block',],

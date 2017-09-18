@@ -83,6 +83,15 @@ class Deploy {
     $this->log($output);
     $output = '';
 
+    if ($this->_repository->post_deploy)
+    {
+      // running post deploy scripts
+      exec($this->_repository->post_deploy, $output);
+      $this->log('Post deploy scripts: '.$this->_repository->post_deploy);
+      $this->log($output);
+      $output = '';
+    }
+
     if (is_callable($this->post_deploy))
     {
       call_user_func($this->post_deploy, $this->_data);
