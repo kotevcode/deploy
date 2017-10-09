@@ -13,31 +13,35 @@ class Log extends Model
      * @var array
      */
     protected $fillable = [
-      'repo_id',
-      'content',
-      'madeBy',
-      'user_id'
+        'repo_id',
+        'content',
+        'madeBy',
+        'user_id',
     ];
 
-  public function repo()
-  {
-    return $this->belongsTo('App\Models\Repo');
-  }
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'content' => 'array',
+    ];
 
-  public function user()
-  {
-    return $this->belongsTo('App\Models\User');
-  }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function repo()
+    {
+        return $this->belongsTo('App\Models\Repo');
+    }
 
-  public function getContentAttribute()
-  {
-    if(isset($this->attributes['content']))
-      return json_decode($this->attributes['content']);
-  }
-
-  public function setContentAttribute($val)
-  {
-    $this->attributes['content'] = json_encode($val);
-  }
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
 }

@@ -15,12 +15,12 @@ class CreateReposTable extends Migration
      {
          Schema::create('repos', function (Blueprint $table) {
              $table->increments('id');
-             $table->string('url');
+             $table->string('url')->nullable();
              $table->string('bitbucket')->unique();
-             $table->string('directory');
-             $table->string('remote');
-             $table->string('branch');
-             $table->boolean('auto_deploy');
+             $table->string('directory')->nullable();
+             $table->string('remote')->nullable();
+             $table->string('branch')->nullable();
+             $table->boolean('auto_deploy')->default(false);
              $table->text('comments')->nullable();
              $table->timestamps();
          });

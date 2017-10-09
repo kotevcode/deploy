@@ -13,20 +13,23 @@ class Repo extends Model
      * @var array
      */
     protected $fillable = [
-      'url',
-      'bitbucket',
-      'account',
-      'directory',
-      'remote',
-      'branch',
-      'auto_deploy',
-      'comments',
-      'post_deploy'
+        'url',
+        'bitbucket',
+        'account',
+        'directory',
+        'remote',
+        'branch',
+        'auto_deploy',
+        'comments',
+        'post_deploy',
     ];
 
+    /**
+     * @return mixed
+     */
     public function logs()
     {
-      return $this->hasMany('App\Models\Log')->orderBy('created_at','desc');
+        return $this->hasMany('App\Models\Log')->orderBy('created_at', 'desc');
     }
 
 }
